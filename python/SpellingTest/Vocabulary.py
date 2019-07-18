@@ -53,7 +53,8 @@ def word_list(path):
     return List
 #------------------------------------------------
 foldernames = os.listdir('mp3Data')
-foldernames.remove(".DS_Store")
+if '.DS_Store' in foldernames:
+    foldernames.remove(".DS_Store")
 print("Exsiting folders are:")
 print(foldernames)
 
@@ -82,20 +83,6 @@ canvas.pack()
 background_image = tk.PhotoImage(file='spelling.png')
 background_label = tk.Label(root,image=background_image)
 background_label.place(relwidth=1,relheight=1)
-
-#""" Folder Choose window """
-#top_frame = tk.Frame(root,bg='#3399ff',bd=5)
-#top_frame.place(relx=0.5,rely=0.01,relwidth=0.75,relheight=0.15,anchor='n')
-#
-#folder_list = tk.Label(top_frame,font=('Courier',15),fg='blue',anchor='nw',justify='left',bd=4)
-#folder_list.place(relwidth=0.6,relheight=1)
-#folder_list['text'] = "Choose Foder list below: \n Grade1"
-#
-#folder_Box = tk.Entry(top_frame,font=('Courier',18))
-#folder_Box.place(relx=0.65,relwidth=0.33,relheight=0.5)
-#
-#get_folderBtn = tk.Button(top_frame, text="Choose",font=('Courier',18),command=lambda:print(folder_Box.get()))
-#get_folderBtn.place(relx=0.65,rely=0.5,relwidth=0.33,relheight=0.5)
 
 #----------------------------------------------------
 """ Main window """
