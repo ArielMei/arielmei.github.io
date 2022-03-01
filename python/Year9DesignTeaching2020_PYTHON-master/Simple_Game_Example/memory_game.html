@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--
+		IF YOU HAVE JUST ARRIVED AND ARE PLANNING ON FOLLOWING ALONG MAKE THIS FILE
+	-->
+
+	<title>Memory Game</title>
+</head>
+<body>
+
+	<p id = "display"></p>
+	<p id = "guesses"></p>
+		
+
+
+	<script>
+
+		//Set Board data structure
+		board = ["one","one","two","two","three","three","four","four"]
+		display_board = ["?","?","?","?","?","?","?","?"]
+		guesses = 0
+		
+		//Randomize the board
+		for (i = 0; i < 100; i = i + 1) {
+			//generate two random index values
+			r1 = getRndInteger(0,8)
+			temp = board[r1]
+			r2 = getRndInteger(0,8)
+			board[r1] = board[r2]
+			board[r2] = temp
+
+			//swap the values at the indexes. 
+		}
+		console.log(board)
+
+		
+		while (display_board.includes("?")) {
+			//Each guess is going to be a valid index from board
+			guess1 = prompt(display_board+"\nGuess 1");
+			guess1 = parseInt(guess1);
+			 
+			display_board[guess1] = board[guess1];
+			
+
+			guess2 = prompt(display_board+"\nGuess 2");
+			guess2 = parseInt(guess2);
+
+			display_board[guess2] = board[guess2];
+			alert(display_board)
+
+
+			//Check does board[a] == board[b] this measns we have a match
+			 if (board[guess1] === board[guess2]) {
+			 	alert("MATCH!")
+			 	display_board[guess1] = 'X'
+			 	display_board[guess2] = 'X'
+			 }
+			 else {
+			 	alert("NO MATCH")
+			 	display_board[guess1] = '?'
+			 	display_board[guess2] = '?'
+			 }
+			 guesses = guesses + 1
+		}
+
+		document.getElementById("display").innerHTML = "THANKS FOR PLAYING!";
+		document.getElementById("guesses").innerHTML = "It took you "+guesses+" guesses";
+
+		
+
+		function getRndInteger(min, max) {
+ 			return Math.floor(Math.random() * (max - min) ) + min;
+		}
+
+	</script>
+
+</body>
+</html>
